@@ -1,0 +1,75 @@
+.sendMail {
+  position: absolute;
+  flex: 1;
+  bottom: 0px;
+  right: 50px;
+  background-color: white;
+  width: 35%;
+  height: 60%;
+  max-width: 900px;
+  min-width: 500px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.sendMail__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(61, 61, 61);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+}
+.sendMail__headerLeft {
+  padding-left: 15px;
+  font-size: 13.5px;
+  color: rgb(221, 221, 221);
+}
+.sendMail__forms {
+  box-shadow: 5px 0px 10px -5px rgb(223, 223, 223),
+    -5px 0px 10px -5px rgb(223, 223, 223);
+}
+.sendMail__forms > form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.sendDMail__input {
+  display: flex;
+  border: none;
+  height: 30px;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.sendMail__formsMessage {
+  height: 300px;
+}
+.sendMail__headerRight {
+  color: white;
+}
+.modifyColor {
+  color: rgb(221, 221, 221);
+}
+.sendMail__send {
+  background-color: #3079ed !important;
+  text-transform: capitalize !important;
+  margin: 15px !important;
+}
+.sendMail__errorTo {
+  color: red;
+  text-align: right;
+  padding-top: 5px;
+  padding-right: 5px;
+  position: absolute;
+  right: 20px;
+}
+.sendMail__errorSubject {
+  color: red;
+  text-align: right;
+  padding-top: 35px;
+  padding-right: 5px;
+  position: absolute;
+  right: 20px;
+}

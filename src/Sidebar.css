@@ -1,5 +1,10 @@
+.sidebar {
+  flex: 0.26;
+  max-width: 300px;
+  padding-right: 20px;
+}
 .sidebar__compose {
-  margin: 10px 15px 0px 15px !important;
+  margin: 10px 15px 15px 15px !important;
   width: 150px;
   height: 50px;
   color: gray;
