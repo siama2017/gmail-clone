@@ -7,11 +7,23 @@ import UnfoldMoreIcon from "@material-ui/icons/UnfoldMore";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { closeSendMessage } from "./features/mailSlice";
+import { db } from "./firebase";
+import firebase from "firebase";
 
 const SendMail = () => {
   const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (formData) => {};
   const dispatch = useDispatch();
+  const onSubmit = (formData) => {
+    //adding data to firebase (Cloud Firestore)
+    db.collection("emails").add({
+      to: formData.to,
+      subject: formData.subject,
+      message: formData.message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    dispatch(closeSendMessage());
+  };
+
   return (
     <div className="sendMail">
       <div className="sendMail__header">
@@ -40,7 +52,7 @@ const SendMail = () => {
             name="to"
             className="sendDMail__input"
             placeholder="To"
-            type="text"
+            type="email"
             ref={register({ required: true })}
           />
           {errors.to && (

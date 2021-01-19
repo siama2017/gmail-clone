@@ -16,7 +16,6 @@
   margin-left: 5px;
   margin-right: 10px;
   cursor: pointer;
-
   padding: 10px;
 }
 .tagName {
@@ -48,7 +47,4 @@
 .header__right {
   display: flex;
   min-width: 200px;
-}
-> .MuiSvgIcon-root {
-  color: black;
 }

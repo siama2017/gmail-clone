@@ -20,9 +20,15 @@ import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import ReplyIcon from "@material-ui/icons/Reply";
 import { useHistory } from "react-router-dom";
+import { db } from "firebase";
+import { selectOpenMail } from "./features/mailSlice";
+import { useSelector } from "react-redux";
 
 const Mail = () => {
   const history = useHistory();
+  // initiated data to be pull from the data layer provided by redux
+  const selectedMail = useSelector(selectOpenMail);
+
   return (
     <div className="mail">
       <div className="mail__tools">
@@ -72,12 +78,12 @@ const Mail = () => {
       </div>
       <div className="mail__outer">
         <div className="mail__outerLeft">
-          <h2>Subject line come here</h2>
+          <h2>{selectedMail?.subject}</h2>
           <IconButton>
             <LabelImportantIcon className="mail__important" />
           </IconButton>
-          <p>Title</p>
-          <p>10pm</p>
+
+          <p>{selectedMail?.time}</p>
         </div>
         <div className="mail__outerRight">
           <IconButton>
@@ -95,7 +101,7 @@ const Mail = () => {
               <Avatar />
             </IconButton>
           </div>
-          <p>Sender's email</p>
+          <p>{selectedMail?.title}</p>
           <div className="mail__toMe">
             <p>to me</p>
             <IconButton>
@@ -104,7 +110,7 @@ const Mail = () => {
           </div>
         </div>
         <div className="mail__bodyRight">
-          <p>11:00 AM (minutes ago)</p>
+          <p>{selectedMail.time}</p>
           <IconButton>
             <StarBorderIcon />
           </IconButton>
@@ -116,7 +122,7 @@ const Mail = () => {
           </IconButton>
         </div>
       </div>
-      <div className="mail__message">Message</div>
+      <div className="mail__message">{selectedMail?.description}</div>
     </div>
   );
 };

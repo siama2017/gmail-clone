@@ -4,11 +4,28 @@ import { Checkbox, Button, IconButton } from "@material-ui/core";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
 import LabelImportantIcon from "@material-ui/icons/LabelImportant";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectedMail } from "./features/mailSlice";
 
 const EmailRow = ({ id, title, subject, description, time }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
+
+  // passing the info to the data layer
+  const openMail = () => {
+    dispatch(
+      selectedMail({
+        id,
+        title,
+        subject,
+        description,
+        time,
+      })
+    );
+    history.push("/mail");
+  };
   return (
-    <div onClick={() => history.push("./mail")} className="emailRow">
+    <div onClick={openMail} className="emailRow">
       <div className="emailRow__options">
         <Checkbox />
         <IconButton>

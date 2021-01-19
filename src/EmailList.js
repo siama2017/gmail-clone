@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Section from "./Section";
 import EmailRow from "./EmailRow";
-import { Checkbox, Button, IconButton } from "@material-ui/core";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import ArchiveIcon from "@material-ui/icons/Archive";
-import DeleteIcon from "@material-ui/icons/Delete";
+import { Checkbox, IconButton } from "@material-ui/core";
 import InboxIcon from "@material-ui/icons/Inbox";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import PeopleIcon from "@material-ui/icons/People";
@@ -15,8 +12,24 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import KeyboardIcon from "@material-ui/icons/Keyboard";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import "./EmailList.css";
+import { db } from "./firebase";
 
 const EmailList = () => {
+  const [emails, setEmails] = useState([]);
+
+  // loading existing data collection from firebase
+  useEffect(() => {
+    db.collection("emails")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setEmails(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
   return (
     <div className="emailList">
       <div className="emailList__settings">
@@ -52,18 +65,145 @@ const EmailList = () => {
         <Section Icon={PeopleIcon} title="Social" color="#1a73e8" />
         <Section Icon={LocalOfferIcon} title="Promotions" color="green" />
       </div>
+      {/* accessing pulled data and rendering into our front-end view into email lists */}
       <div className="emailList__list">
+        {emails.map(({ id, data: { to, subject, message, timestamp } }) => (
+          <EmailRow
+            id={id}
+            key={id}
+            title={to}
+            subject={subject}
+            description={message}
+            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+          />
+        ))}
         <EmailRow
-          title="OnCall"
-          subject="New LanguageLoop job Offer"
-          description="- Job ID: 1755489 Hi Vanlalsiama.  new Job offer for you"
-          time="11:00 am"
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
         />
         <EmailRow
-          title="OnCall"
-          subject="New LanguageLoop job Offer"
-          description="- Job ID: 1755489 Hi Vanlalsiama.  new Job offer for you"
-          time="11:00 am"
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
+        />
+        <EmailRow
+          id="123"
+          key="153"
+          title="Hello"
+          subject="Hard coded title"
+          description="Hard coded message"
+          time="10:pm"
         />
       </div>
     </div>
