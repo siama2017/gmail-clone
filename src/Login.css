@@ -6,10 +6,69 @@
 .login__container {
   display: flex;
   flex-direction: column;
+  border: 1px solid rgb(216, 216, 216);
+  height: 50vh;
+  max-width: 600px;
+  border-radius: 10px;
+  align-items: center;
+  padding: 50px 40px 20px 40px;
 }
-
-.login__container > img {
+.login__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login__header > img {
   object-fit: contain;
-  height: 200px;
-  margin-bottom: 20px;
+  width: 100px;
+  justify-content: center;
+}
+.login__header > p {
+  font-size: 18px;
+  font-weight: 500;
+}
+.signIn {
+  font-size: 25px;
+  font-weight: 500;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+.login__middleForm {
+  padding-top: 30px;
+}
+.login__middle {
+  width: 100%;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+.login__middle > h5 {
+  font-size: 18px;
+
+  color: rgb(58, 96, 223);
+  padding-top: 8px;
+  cursor: pointer;
+}
+.MuiOutlinedInput-input {
+  width: 100% !important;
+  background-color: red;
+}
+.MuiInputBase-input {
+  width: 410px !important;
+}
+.login__bottom > p {
+  font-size: 17px;
+  font-weight: 400;
+}
+.login__bottom > h5 {
+  font-size: 18px;
+  color: rgb(58, 96, 223);
+  padding-top: 5px;
+  padding-bottom: 100px;
+  cursor: pointer;
+}
+.login__containerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

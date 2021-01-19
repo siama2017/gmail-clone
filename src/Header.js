@@ -8,10 +8,16 @@ import AppsIcon from "@material-ui/icons/Apps";
 import SettingsIcon from "@material-ui/icons/Settings";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import { useDispatch, useSelector } from "react-redux";
-import { login, selectUser } from "./features/userSlice";
+import { logout, selectUser } from "./features/userSlice";
+import { auth } from "./firebase";
 const Header = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const signOut = () => {
+    auth.signOut().then(() => {
+      dispatch(logout());
+    });
+  };
   return (
     <div className="header">
       <div className="header__left">
@@ -40,7 +46,7 @@ const Header = () => {
           <AppsIcon />
         </IconButton>
         <IconButton>
-          <Avatar src={user?.photoUrl} />
+          <Avatar onClick={signOut} src={user?.photoUrl} />
         </IconButton>
       </div>
     </div>
